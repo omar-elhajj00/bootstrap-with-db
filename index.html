@@ -84,13 +84,15 @@
     <!-- Start contact me Section -->
     <section class="contact-us-container">
       <h1>Contact me</h1>
-      <form action="" method="post" id="send-form">
-        <input type="text" placeholder="Full name" id="full-name" required>
-        <input type="email" placeholder="Email address" id="email" required>
-        <input type="tel" placeholder="Phone Number" id="phone-number" required>
-        <textarea name="" cols="30" rows="5" placeholder="Message" id="message-text" required></textarea>
-        <button id="send-btn"> Send</button>
+
+      <form action="php/add_user_info.php" method="post" id="send-form">
+        <input type="text" name="fname" placeholder="Full name" id="full-name" required>
+        <input type="email" name="email" placeholder="Email address" id="email" required>
+        <input type="tel" name="phone" placeholder="Phone Number" id="phone-number" required>
+        <textarea name="message" cols="30" rows="5" placeholder="Message" id="message-text" required></textarea>
+        <button type="submit" id="send-btn"> Send</button>
       </form>
+
       <ul style="color:red ; list-style: none; max-width:20rem ; font-size:1rem; margin-top:1rem">
         <li id="fname-warning"></li>
         <li id="email-warning"></li>
