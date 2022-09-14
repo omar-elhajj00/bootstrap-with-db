@@ -67,13 +67,71 @@ function validateInfo() {
     }
     //if everythig is okay
     else {
-        successMessage.innerHTML = 'submitted , thank you !'; 
+        // successMessage.innerHTML = 'submitted , thank you !'; 
+        // console.log('hah');
         // clear all the warnings
         fullNAmeWarning.innerHTML = "";
         emailWarning.innerHTML = "";
         phoneNumberWarning.innerHTML = "";
         messageWarning.innerHTML = "";
+
+        //send data to php by fetch api
+        const fnameV = fullName.value;
+        const emailV = email.value;
+        const phoneV = phoneNumber.value;
+        const messageV = message.value;
+
+        let url = "http://localhost/bootstrap-with-db/php/add_user_info.php";
+        let parameters = {
+            method:'POST',
+            body: new URLSearchParams({
+                fname: fnameV,
+                email:emailV,
+                phone : phoneV,
+                message:messageV 
+            })
+        }
+
+        fetch(url,parameters)
+            .then(respone=>respone.json())
+            .then(data=>console.log(data));
+
+            // const sendData = async (fname, email, phone, message) => { 
+            // try { 
+            // const url=  "http://localhost/bootstrap-with-db/php/add_user_info.php"; 
+            // const res = await fetch(url, { 
+            //     method: 'POST', 
+            //     body: JSON.stringify({
+            //         fname:fnameV,
+            //         email:emailV,
+            //         phone : phoneV,
+            //         message:messageV 
+            //     }), 
+            //     headers:{   
+            //         'Content-Type': 'application/json', 
+            //     }
+            //     })
+
+        // url="http://localhost/bootstrap-with-db/php/add_user_info.php";
+        // fetch(url, {
+        // method: 'POST',
+        // body: JSON.stringify({
+        //     fname:fullName.value ,
+        //     email:email.value ,
+        //     phone:phoneNumber.value ,
+        //     message:message.value ,
+        // })
+        // })
+        // .then(function(response) {
+        //     return response.text();
+        // })
+        // .then(function(data) {
+        //     console.log(data);
+        // });
     }
+
+
+
 
 }
 
